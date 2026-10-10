@@ -1,0 +1,25 @@
+Pasos para usar sdd.
+1. armar la specify en el formato.
+2. usar las kill /speckit-specify
+3. usar skill /speckit-clarify (opcional)
+4. usar skill /speckit-plan
+    Se crea..
+    plan.md
+    research.md
+    data-model.md
+    contracts/ui.md
+    contracts/backup-file.md
+    quickstart.md: la guía de validación paso a paso, en móvil y ordenador
+
+5. /speckit-tasks  
+    divide el plan en tareas
+
+6. /speckit-analyze  (opcional)
+    scanea la spec y scanea el plan tecnico y las task.
+
+7. /speckit-implement  
+
+8.1 iterar en el ciclo de spec driven develop.
+    .usar las kill /speckit-specify para que agregue la specificacion en 
+        el documento. Junto con el promt.
+

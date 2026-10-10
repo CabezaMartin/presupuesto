@@ -1,0 +1,453 @@
+:root {
+  --color-primario: #2563eb;
+  --color-texto: #1a1a1a;
+  --color-texto-secundario: #555555;
+  --color-fondo: #f7f7f8;
+  --color-superficie: #ffffff;
+  --color-borde: #dddddd;
+  --color-error: #dc2626;
+  --color-error-fondo: #fee2e2;
+  --color-error-texto: #991b1b;
+
+  --color-estado-borrador: #6b7280;
+  --color-estado-borrador-fondo: #f3f4f6;
+  --color-estado-enviado: #2563eb;
+  --color-estado-enviado-fondo: #dbeafe;
+  --color-estado-aceptado: #16a34a;
+  --color-estado-aceptado-fondo: #dcfce7;
+  --color-estado-rechazado: #dc2626;
+  --color-estado-rechazado-fondo: #fee2e2;
+
+  --fuente-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --espaciado-s: 8px;
+  --espaciado-m: 16px;
+  --espaciado-l: 24px;
+
+  --radio-tarjeta: 8px;
+  --radio-chip: 4px;
+
+  --color-secundario-fondo: #e5e7eb;
+  --color-aviso-fondo: #fff7ed;
+  --color-aviso-borde: #fed7aa;
+  --color-aviso-texto: #9a3412;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente-base);
+  color: var(--color-texto);
+  background: var(--color-fondo);
+}
+
+#app {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px 16px 80px 16px;
+}
+
+input, select, textarea, button {
+  font-size: 16px;
+  font-family: inherit;
+}
+
+button, input, select, textarea {
+  min-height: 44px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background: var(--color-primario);
+  color: var(--color-superficie);
+  padding: 0 16px;
+}
+
+button.secundario {
+  background: var(--color-secundario-fondo);
+  color: var(--color-texto);
+}
+
+button.peligro {
+  background: var(--color-error);
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+textarea {
+  min-height: 80px;
+}
+
+.error {
+  border-color: var(--color-error) !important;
+}
+
+.mensaje-error {
+  color: var(--color-error);
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.etiqueta-estado {
+  display: inline-block;
+  border-radius: var(--radio-chip);
+  padding: 2px 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.etiqueta-estado.estado-borrador {
+  background: var(--color-estado-borrador-fondo);
+  color: var(--color-estado-borrador);
+}
+
+.etiqueta-estado.estado-enviado {
+  background: var(--color-estado-enviado-fondo);
+  color: var(--color-estado-enviado);
+}
+
+.etiqueta-estado.estado-aceptado {
+  background: var(--color-estado-aceptado-fondo);
+  color: var(--color-estado-aceptado);
+}
+
+.etiqueta-estado.estado-rechazado {
+  background: var(--color-estado-rechazado-fondo);
+  color: var(--color-estado-rechazado);
+}
+
+.etiqueta-caducado {
+  display: inline-block;
+  background: var(--color-error-fondo);
+  color: var(--color-error-texto);
+  border-radius: var(--radio-chip);
+  padding: 2px 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#aviso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  text-align: center;
+  padding: 10px 16px;
+  background: var(--color-texto);
+  color: var(--color-superficie);
+  display: none;
+}
+
+#aviso.visible {
+  display: block;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: var(--color-superficie);
+  border-top: 1px solid var(--color-borde);
+  z-index: 50;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  padding: 6px 2px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-texto-secundario);
+  font-size: 11px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+nav a.activo {
+  color: var(--color-primario);
+  font-weight: 600;
+}
+
+section {
+  margin-top: var(--espaciado-l);
+  padding-top: var(--espaciado-s);
+  border-top: 1px solid var(--color-borde);
+}
+
+section h2 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+}
+
+.cabecera-editor {
+  margin-bottom: 8px;
+}
+
+.cabecera-editor h1 {
+  display: inline-block;
+  margin: 0 8px 0 0;
+}
+
+.cabecera-editor p {
+  margin: 4px 0;
+  color: var(--color-texto-secundario);
+}
+
+.tarjeta-linea {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.fila-cantidad-precio {
+  display: flex;
+  gap: 12px;
+}
+
+.fila-cantidad-precio label {
+  flex: 1;
+}
+
+.importe-linea {
+  margin-top: 8px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.tarjeta-linea button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.aviso-particular {
+  background: var(--color-aviso-fondo);
+  border: 1px solid var(--color-aviso-borde);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--color-aviso-texto);
+}
+
+.desglose-fijo {
+  position: sticky;
+  bottom: 60px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: 12px 16px;
+  margin-top: var(--espaciado-l);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.linea-desglose {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.linea-desglose.total {
+  font-weight: 700;
+  font-size: 20px;
+  border-top: 1px solid var(--color-borde);
+  margin-top: 4px;
+  padding-top: 8px;
+}
+
+.desglose-fijo button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Lista de presupuestos */
+
+.tarjeta-presupuesto {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.tarjeta-presupuesto-info {
+  cursor: pointer;
+}
+
+.tarjeta-presupuesto-total {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 4px;
+}
+
+.tarjeta-presupuesto-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tarjeta-presupuesto-acciones button {
+  flex: 1;
+  min-width: 90px;
+  padding: 0 8px;
+}
+
+/* Catálogo */
+
+.fila-servicio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: 12px;
+  margin-top: 12px;
+  min-height: 44px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fila-servicio-datos {
+  display: flex;
+  flex-direction: column;
+}
+
+.fila-servicio-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.formulario-servicio {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.formulario-servicio button {
+  margin-top: 12px;
+  margin-right: 8px;
+}
+
+.lista-selector-catalogo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.fila-servicio-selector {
+  display: flex;
+  justify-content: space-between;
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+/* Perfil */
+
+.vista-previa-logo-img {
+  max-height: 80px;
+  display: block;
+  margin-top: 8px;
+}
+
+#btn-quitar-logo,
+#btn-guardar-perfil,
+#btn-exportar-copia {
+  margin-top: 12px;
+  margin-right: 8px;
+}
+
+/* Inicio */
+
+.resumen-inicio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espaciado-s);
+  margin-top: var(--espaciado-m);
+}
+
+.tarjeta-resumen {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: var(--espaciado-m);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tarjeta-resumen-total {
+  grid-column: 1 / -1;
+}
+
+.tarjeta-resumen-numero {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.accesos-inicio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espaciado-s);
+  margin-top: var(--espaciado-s);
+}
+
+.acceso-inicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  color: var(--color-primario);
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  padding: var(--espaciado-s);
+}
+
+@media (min-width: 720px) {
+  #app {
+    max-width: 720px;
+  }
+}
