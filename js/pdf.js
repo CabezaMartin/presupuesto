@@ -38,8 +38,10 @@ export function descargarPdf(perfil, presupuesto) {
 
   doc.setFontSize(11);
   doc.setFont("helvetica", "bold");
+  doc.setTextColor(...COLOR_TEXTO);
   doc.text(perfil.nombre, margenIzq, yDatos);
   doc.setFont("helvetica", "normal");
+  doc.setTextColor(...COLOR_TEXTO_SECUNDARIO);
   let yF = yDatos + 5;
   doc.text("NIF: " + perfil.nif, margenIzq, yF);
   if (perfil.direccion) {
@@ -57,9 +59,11 @@ export function descargarPdf(perfil, presupuesto) {
 
   doc.setFontSize(20);
   doc.setFont("helvetica", "bold");
+  doc.setTextColor(...COLOR_PRIMARIO);
   doc.text("PRESUPUESTO", margenDer, 18, { align: "right" });
   doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
+  doc.setTextColor(...COLOR_TEXTO_SECUNDARIO);
   doc.text("Nº " + presupuesto.numero, margenDer, 25, { align: "right" });
   doc.text("Fecha de emisión: " + formatFecha(presupuesto.fechaEmision), margenDer, 30, { align: "right" });
   doc.text(
@@ -71,8 +75,10 @@ export function descargarPdf(perfil, presupuesto) {
 
   let yCliente = Math.max(yF, 35) + 10;
   doc.setFont("helvetica", "bold");
+  doc.setTextColor(...COLOR_TEXTO);
   doc.text("Cliente", margenIzq, yCliente);
   doc.setFont("helvetica", "normal");
+  doc.setTextColor(...COLOR_TEXTO_SECUNDARIO);
   yCliente += 6;
   doc.text(presupuesto.cliente.nombre, margenIzq, yCliente);
   if (presupuesto.cliente.nif) {
@@ -100,8 +106,8 @@ export function descargarPdf(perfil, presupuesto) {
     startY: yCliente + 8,
     head: [["Descripción", "Cantidad", "Precio unitario", "Importe"]],
     body: filas,
-    styles: { font: "helvetica", fontSize: 10 },
-    headStyles: { fillColor: [37, 99, 235] },
+    styles: { font: "helvetica", fontSize: 10, textColor: COLOR_TEXTO },
+    headStyles: { fillColor: COLOR_PRIMARIO, textColor: COLOR_SUPERFICIE },
     columnStyles: {
       1: { halign: "right" },
       2: { halign: "right" },
@@ -112,11 +118,13 @@ export function descargarPdf(perfil, presupuesto) {
   let yDesglose = doc.lastAutoTable.finalY + 10;
   const xEtiqueta = margenDer - 50;
 
-  function filaDesglose(etiqueta, valor, negrita) {
-    doc.setFont("helvetica", negrita ? "bold" : "normal");
+  function filaDesglose(etiqueta, valor, destacado) {
+    doc.setFont("helvetica", destacado ? "bold" : "normal");
+    doc.setFontSize(destacado ? 13 : 10);
+    doc.setTextColor(...(destacado ? COLOR_PRIMARIO : COLOR_TEXTO));
     doc.text(etiqueta, xEtiqueta, yDesglose);
     doc.text(valor, margenDer, yDesglose, { align: "right" });
-    yDesglose += 6;
+    yDesglose += destacado ? 8 : 6;
   }
 
   filaDesglose("Base imponible", formatEuros(totales.base), false);
@@ -134,9 +142,11 @@ export function descargarPdf(perfil, presupuesto) {
     let yNotas = yDesglose + 8;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
+    doc.setTextColor(...COLOR_TEXTO);
     doc.text("Notas / condiciones", margenIzq, yNotas);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
+    doc.setTextColor(...COLOR_TEXTO_SECUNDARIO);
     yNotas += 6;
     const lineasNotas = doc.splitTextToSize(presupuesto.notas, anchoPagina - margenIzq * 2);
     doc.text(lineasNotas, margenIzq, yNotas);

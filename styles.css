@@ -381,6 +381,43 @@ section h2 {
   padding: 0 12px;
 }
 
+/* Clientes */
+
+.lista-clientes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-s);
+  margin-top: var(--espaciado-m);
+}
+
+.fila-cliente {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  padding: 12px;
+  min-height: 44px;
+  gap: var(--espaciado-s);
+}
+
+.fila-cliente-datos {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fila-cliente-datos span {
+  color: var(--color-texto-secundario);
+  font-size: 14px;
+}
+
+.fila-cliente-contador {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 /* Perfil */
 
 .vista-previa-logo-img {

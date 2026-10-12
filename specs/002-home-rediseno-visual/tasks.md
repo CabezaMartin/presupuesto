@@ -125,8 +125,8 @@ description: "Task list for Página de inicio y rediseño visual profesional"
 
 ### Implementation for User Story 5
 
-- [ ] T019 [US5] Declarar al principio de `js/pdf.js` constantes de color con los mismos valores que las variables CSS de T002 (jsPDF no puede leer CSS) y aplicarlas con `doc.setTextColor(...)` / `doc.setFillColor(...)` en el título, los datos del freelancer/cliente y la cabecera de la tabla (`headStyles.fillColor`, ya usado en la spec 001)
-- [ ] T020 [US5] Ajustar en `js/pdf.js` los tamaños de fuente y espaciados del desglose y el total para reforzar la misma jerarquía visual del rediseño (total más grande/negrita), sin cambiar el contenido, el orden de los bloques ni los datos existentes (spec 001)
+- [X] T019 [US5] Declarar al principio de `js/pdf.js` constantes de color con los mismos valores que las variables CSS de T002 (jsPDF no puede leer CSS) y aplicarlas con `doc.setTextColor(...)` / `doc.setFillColor(...)` en el título, los datos del freelancer/cliente y la cabecera de la tabla (`headStyles.fillColor`, ya usado en la spec 001)
+- [X] T020 [US5] Ajustar en `js/pdf.js` los tamaños de fuente y espaciados del desglose y el total para reforzar la misma jerarquía visual del rediseño (total más grande/negrita), sin cambiar el contenido, el orden de los bloques ni los datos existentes (spec 001)
 
 **Checkpoint**: el PDF descargado usa la misma paleta/tipografía que la app; todos los datos de la spec 001 siguen presentes y con los mismos importes; no muestra "Caducado" ni el estado.
 
@@ -140,9 +140,9 @@ description: "Task list for Página de inicio y rediseño visual profesional"
 
 ### Implementation for User Story 6
 
-- [ ] T021 [US6] Implementar la vista `#/clientes` en `js/app.js` usando `agruparClientes(estado.presupuestos)`: lista con nombre, tipo, NIF/CIF (si existe) y número de presupuestos asociados; sin ninguna acción de alta, edición ni borrado
-- [ ] T022 [US6] En la vista Clientes, cuando no haya ningún presupuesto todavía, mostrar "Todavía no tienes clientes" sin error
-- [ ] T023 [P] [US6] Añadir a `styles.css` los estilos de la lista de Clientes (tarjeta por cliente, mismo criterio visual que el resto de listas), usando las variables de T002
+- [X] T021 [US6] Implementar la vista `#/clientes` en `js/app.js` usando `agruparClientes(estado.presupuestos)`: lista con nombre, tipo, NIF/CIF (si existe) y número de presupuestos asociados; sin ninguna acción de alta, edición ni borrado
+- [X] T022 [US6] En la vista Clientes, cuando no haya ningún presupuesto todavía, mostrar "Todavía no tienes clientes" sin error
+- [X] T023 [P] [US6] Añadir a `styles.css` los estilos de la lista de Clientes (tarjeta por cliente, mismo criterio visual que el resto de listas), usando las variables de T002
 
 **Checkpoint**: Clientes agrupa correctamente sin duplicar y no ofrece ninguna acción de edición.
 
@@ -152,9 +152,9 @@ description: "Task list for Página de inicio y rediseño visual profesional"
 
 **Purpose**: revisión final según la constitución y el plan, y validación completa.
 
-- [ ] T024 Revisar que ningún archivo ni carpeta fuera de `index.html`, `styles.css`, `js/app.js`, `js/calc.js`, `js/store.js`, `js/pdf.js` y `specs/002-home-rediseno-visual/` fue creado o modificado (sin `public/`, sin `src/`, sin dependencias nuevas en `vendor/`), y que todos los textos nuevos están en español de España (Principio III)
+- [X] T024 Revisar que ningún archivo ni carpeta fuera de `index.html`, `styles.css`, `js/app.js`, `js/calc.js`, `js/store.js`, `js/pdf.js` y `specs/002-home-rediseno-visual/` fue creado o modificado (sin `public/`, sin `src/`, sin dependencias nuevas en `vendor/`), y que todos los textos nuevos están en español de España (Principio III)
 - [ ] T025 Comprobar el diseño a 360 px de ancho (herramientas de desarrollo del navegador) en Inicio y en la navegación de 5 accesos: sin scroll horizontal ni elementos solapados; corregir en `styles.css`
-- [ ] T026 Ejecutar `node --test tests/` y confirmar que todas las pruebas (spec 001 + spec 002) pasan
+- [X] T026 Ejecutar `node --test tests/` y confirmar que todas las pruebas (spec 001 + spec 002) pasan
 - [ ] T027 Recorrer todos los escenarios de [quickstart.md](quickstart.md) en la app servida localmente
 
 ---

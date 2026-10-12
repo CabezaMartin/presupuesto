@@ -583,7 +583,35 @@ function vistaEditorPresupuesto(presupuesto) {
 // ---------- Catálogo ----------
 
 function vistaClientes() {
-  app.innerHTML = `<h1>Clientes</h1>`;
+  const clientes = agruparClientes(estado.presupuestos);
+
+  if (clientes.length === 0) {
+    app.innerHTML = `
+      <h1>Clientes</h1>
+      <p>Todavía no tienes clientes</p>
+    `;
+    return;
+  }
+
+  app.innerHTML = `
+    <h1>Clientes</h1>
+    <div class="lista-clientes">
+      ${clientes
+        .map(
+          (c) => `
+        <div class="fila-cliente">
+          <div class="fila-cliente-datos">
+            <strong>${escaparHTML(c.nombre)}</strong>
+            <span>${c.tipo === "empresa" ? "Empresa / autónomo" : "Particular"}</span>
+            ${c.nif ? `<span>NIF/CIF: ${escaparHTML(c.nif)}</span>` : ""}
+          </div>
+          <span class="fila-cliente-contador">${c.numPresupuestos} presupuesto${c.numPresupuestos === 1 ? "" : "s"}</span>
+        </div>
+      `
+        )
+        .join("")}
+    </div>
+  `;
 }
 
 function vistaCatalogo() {
