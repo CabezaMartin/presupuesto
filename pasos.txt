@@ -23,3 +23,33 @@ Pasos para usar sdd.
     .usar las kill /speckit-specify para que agregue la specificacion en 
         el documento. Junto con el promt.
 
+
+
+
+
+GIT
+
+
+git branch --show-current
+
+# 1. Ver el estado actual de cambios
+git status
+
+# 2. Agregar archivos específicos al staging
+git add archivo.js
+git add js/app.js
+
+# 3. Agregar TODOS los cambios al staging
+git add .
+
+# 4. Crear un commit con mensaje
+git commit -m "Descripción clara del cambio"
+
+# 5. Enviar los cambios al repositorio remoto
+git push
+
+# 6. Si es la primera vez en una rama nueva
+git push -u origin nombre-rama
+
+
+git checkout -b nombre-de-la-rama
