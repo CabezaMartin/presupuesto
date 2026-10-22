@@ -20,7 +20,7 @@ Pasos para usar sdd.
 7. /speckit-implement  
 
 8.1 iterar en el ciclo de spec driven develop.
-    .usar las kill /speckit-specify para que agregue la specificacion en 
+    .usar las skill /speckit-specify para que agregue la specificacion en 
         el documento. Junto con el promt.
 
 
